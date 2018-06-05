@@ -2,12 +2,19 @@
   <div class="bookmarksItem">
     <div class="title">Google</div>
     <div class="url">http://google.ru</div>
-    <div class="dots">···</div>
+    <div class="dots">
+      <app-tooltip />
+    </div>
   </div>
 </template>
 
 <script>
+import AppTooltip from '../AppTooltip/AppTooltip';
+
 export default {
+  components: {
+    AppTooltip,
+  },
 };
 </script>
 
