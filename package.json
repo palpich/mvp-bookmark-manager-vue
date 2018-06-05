@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "clipboard": "^2.0.1",
     "vue": "^2.5.2",
     "vue-click-outside": "^1.0.7",
     "vue-router": "^3.0.1",

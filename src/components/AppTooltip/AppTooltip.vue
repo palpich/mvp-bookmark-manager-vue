@@ -1,16 +1,20 @@
 <template>
   <div class="appTooltip" >
-    <div @click="isOpen = !isOpen">···</div>
+    <div @click="toggle">···</div>
     <ul class="menu" v-if="isOpen" v-click-outside="hide">
       <li>Удалить</li>
       <li>Изменить</li>
-      <li>Копировать URL</li>
+      <li @click="toggle" data-clipboard-text="sdfdf">Копировать URL</li>
     </ul>
   </div>
 </template>
 
 <script>
 import ClickOutside from 'vue-click-outside';
+import ClipboardJS from 'clipboard';
+
+/* eslint-disable no-new */
+new ClipboardJS('li');
 
 export default {
   data() {
@@ -20,6 +24,10 @@ export default {
   },
 
   methods: {
+    toggle() {
+      this.isOpen = !this.isOpen;
+    },
+
     hide() {
       this.isOpen = false;
     },
