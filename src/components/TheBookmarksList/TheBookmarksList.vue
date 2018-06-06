@@ -1,7 +1,7 @@
 <template>
   <div>
     <bookmarks-item
-      v-for="bookmark in bookmarkList"
+      v-for="bookmark in bookmarksList"
       :key="bookmark.id"
       :bookmark="bookmark"
     />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import BookmarksItem from '../BookmarksItem/BookmarksItem';
 
 export default {
@@ -23,14 +23,11 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      bookmarkList: state => state.bookmarks.list,
-    }),
+    ...mapGetters(['bookmarksList']),
   },
 
   methods: {
     ...mapActions(['fetchBookmarksList']),
-
   },
 };
 </script>

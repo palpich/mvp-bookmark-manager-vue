@@ -13,7 +13,7 @@ export default new Router({
       component: BookmarksList,
       children: [
         {
-          path: 'new',
+          path: ':id',
           component: UpdateForm,
         },
       ],

@@ -4,7 +4,7 @@
     <ul class="menu" v-if="isOpen" v-click-outside="hide">
       <li @click="deleteBookmark({ id })">Удалить</li>
       <router-link
-        :to="{ path: 'new' }"
+        :to="{ path: `${id}` }"
         tag="li"
         @click.native="toggle"
       >

@@ -15,13 +15,19 @@ const mutations = {
     state.isFetching = false;
   },
 
-  ADD_BOOKMARK(state, { data }) {
-    state.list.unshift(data);
+  ADD_BOOKMARK(state, { name, url }) {
+    /*
+    * Тут должны быть какая-то логика определения ID, для
+    * mvp пока monkey patch
+    */
+    const id = state.list.length + 1;
+
+    state.list = [{ id, name, url }, ...state.list];
   },
 
-  UPDATE_BOOKMARK(state, { data }) {
+  UPDATE_BOOKMARK(state, data) {
     state.list = state.list.map((item) => {
-      if (item.id === data.id) return data;
+      if (item.id === Number(data.id)) return data;
       return item;
     });
   },
@@ -32,24 +38,29 @@ const mutations = {
 };
 
 const actions = {
-  fetchBookmarksList: ({ commit }) =>
+  fetchBookmarksList: ({ commit }) => {
     /*
     * Для примера написал как может выглядеть асинхронный запрос к API
     * */
-    new Promise((resolve) => {
-      commit('FETCHING_BOOKMARKS');
+    commit('FETCHING_BOOKMARKS');
+    return new Promise((resolve) => {
       setTimeout(() => {
-        commit('FETCHED_BOOKMARKS', { data: [
-          { id: 1, name: 'Google', url: 'http://google.com' },
-          { id: 2, name: 'YouTube', url: 'http://youtube.com' },
-          { id: 3, name: 'Yandex', url: 'http://yandex.ru' },
-        ] });
+        commit('FETCHED_BOOKMARKS', {
+          data: [
+            { id: 1, name: 'Google', url: 'http://google.com' },
+            { id: 2, name: 'YouTube', url: 'http://youtube.com' },
+            { id: 3, name: 'Yandex', url: 'http://yandex.ru' },
+          ],
+        });
         resolve();
       }, 1000);
-    }),
+    });
+  },
 };
 
-const getters = {};
+const getters = {
+  bookmarksList: state => state.list,
+};
 
 export default {
   state,
