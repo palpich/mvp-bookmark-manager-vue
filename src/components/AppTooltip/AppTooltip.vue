@@ -2,14 +2,15 @@
   <div class="appTooltip" >
     <div @click="toggle">···</div>
     <ul class="menu" v-if="isOpen" v-click-outside="hide">
-      <li>Удалить</li>
+      <li @click="deleteBookmark({ id })">Удалить</li>
       <li>Изменить</li>
-      <li @click="toggle" data-clipboard-text="sdfdf">Копировать URL</li>
+      <li @click="toggle" :data-clipboard-text="link">Копировать URL</li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import ClickOutside from 'vue-click-outside';
 import ClipboardJS from 'clipboard';
 
@@ -17,6 +18,17 @@ import ClipboardJS from 'clipboard';
 new ClipboardJS('li');
 
 export default {
+  props: {
+    id: {
+      type: Number,
+      default: -1,
+    },
+    link: {
+      type: String,
+      default: '',
+    },
+  },
+
   data() {
     return {
       isOpen: false,
@@ -24,6 +36,10 @@ export default {
   },
 
   methods: {
+    ...mapMutations({
+      deleteBookmark: 'DELETE_BOOKMARK',
+    }),
+
     toggle() {
       this.isOpen = !this.isOpen;
     },

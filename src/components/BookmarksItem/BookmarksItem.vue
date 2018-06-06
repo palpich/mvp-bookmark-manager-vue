@@ -1,9 +1,12 @@
 <template>
   <div class="bookmarksItem">
-    <div class="title">Google</div>
-    <div class="url">http://google.ru</div>
+    <div class="title">{{bookmark.name}}</div>
+    <div class="url">{{bookmark.url}}</div>
     <div class="dots">
-      <app-tooltip />
+      <app-tooltip
+        :link="bookmark.url"
+        :id="bookmark.id"
+      />
     </div>
   </div>
 </template>
@@ -12,6 +15,15 @@
 import AppTooltip from '../AppTooltip/AppTooltip';
 
 export default {
+  props: {
+    bookmark: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+
   components: {
     AppTooltip,
   },
