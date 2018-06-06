@@ -5,6 +5,7 @@
       :key="bookmark.id"
       :bookmark="bookmark"
     />
+    <router-view />
   </div>
 </template>
 

@@ -3,7 +3,13 @@
     <div @click="toggle">···</div>
     <ul class="menu" v-if="isOpen" v-click-outside="hide">
       <li @click="deleteBookmark({ id })">Удалить</li>
-      <li>Изменить</li>
+      <router-link
+        :to="{ path: 'new' }"
+        tag="li"
+        @click.native="toggle"
+      >
+        Изменить
+      </router-link>
       <li @click="toggle" :data-clipboard-text="link">Копировать URL</li>
     </ul>
   </div>
