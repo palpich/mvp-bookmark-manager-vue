@@ -1,31 +1,40 @@
 <template>
-  <div>
-    <input
-      @input="isError = false"
-      v-model="name"
-    >
-    <input
-      @input="isError = false"
-      v-model="url"
-    >
-
-    <div
-      v-if="isError"
-      class="error"
-    >
-      Заполните пожайлуста поля
+  <div class="updateForm">
+    <div class="form">
+      <input
+        class="inputForm"
+        @input="isError = false"
+        v-model="name"
+        placeholder="Название закладки"
+      >
+      <input
+        class="inputForm"
+        @input="isError = false"
+        v-model="url"
+        placeholder="URl"
+      >
     </div>
-    <app-button
-      @click="$router.push({ path: '/' })"
-      opacity
-    >
-      Отменить
-    </app-button>
-    <app-button
-      @click="handleButton"
-    >
-      Сохранить
-    </app-button>
+    <div class="interface">
+      <div
+        v-if="isError"
+        class="error"
+      >
+        Заполните пожайлуста поля
+      </div>
+      <div class="buttons">
+        <app-button
+          @click="$router.push({ path: '/' })"
+          opacity
+        >
+          Отменить
+        </app-button>
+        <app-button
+          @click="handleButton"
+        >
+          Сохранить
+        </app-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -106,5 +115,23 @@ export default {
 </script>
 
 <style lang='sass' scoped>
+.updateForm
+  padding: 18px
+
+.form
+  text-align: center
+
+.inputForm
+  padding: 5px
+  border-radius: 5px
+  width: 40%
+
+.interface
+  display: flex
+  justify-content: space-between
+  margin-top: 15px
+
+.buttons
+  margin-left: auto
 
 </style>

@@ -1,6 +1,22 @@
 # mvp-bookmark-manager
 
-> A Vue.js project
+MVP позволяет посмотреть список Закладок (например fetchBookmarksList сейчас возвращает пример массива, который можно получать по апи)
+Что можно -
+
+* Добавлять закладки
+* Удалять закладки
+* Редактировать закладки
+
+Если поля пустые, показывает предупреждение.
+
+Все изменения хранятся только в store и пропадают при перезагрузке страницы.
+
+TODO:
+
+* При первом нажатии изменить, данные для формы не предзагружаются
+* Допилить дизайн
+* Отрефакторить UpdateForm.vue
+
 
 ## Build Setup
 
@@ -17,5 +33,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
