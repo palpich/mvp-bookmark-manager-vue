@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div class="main">
-      <h1>Закладки</h1>
+      <div class="header">
+        <h1>Закладки</h1>
+        <router-link to="/new">+</router-link>
+      </div>
       <router-view />
     </div>
   </div>
@@ -35,4 +38,18 @@ h1
 .main
   max-width: 800px
   margin: 0 auto
+
+.header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 18px
+  & > a
+    font-size: 24px
+    font-weight: bold
+    color: #2c3e50
+    text-decoration: none
+    transition: .3s
+    &:hover
+      color: #58a5ff
 </style>
